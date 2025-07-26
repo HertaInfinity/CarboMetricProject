@@ -1,5 +1,5 @@
-import { useState} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import Navbar from './components/Navbar';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
@@ -18,9 +18,12 @@ import Marketplace from './pages/Marketplace';
 import AuthPage from './pages/AuthPage';
 import { UserProvider } from './context/UserContext';
 import { DataProvider } from './context/DataContext';
+import PrivateRoute from './components/PrivateRoute.tsx';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isAuthenticated, isLoading } = useAuth0();
+
+  if (isLoading) return <div className="text-center mt-20 text-green-400">Loading...</div>;
 
   return (
     <UserProvider>
@@ -29,21 +32,23 @@ function App() {
           <div className="min-h-screen bg-black text-green-400">
             {isAuthenticated && <Navbar />}
             <Routes>
-              <Route path="/" element={<LandingPage setAuth={setIsAuthenticated} />} />
-              <Route path="/auth" element={<AuthPage setAuth={setIsAuthenticated} />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/add-data" element={<AddData />} />
-              <Route path="/history" element={<TransactionHistory />} />
-              <Route path="/breakdown" element={<EmissionBreakdown />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/leaderboard" element={<Leaderboard />} />
-              <Route path="/chatbot" element={<Chatbot />} />
-              <Route path="/calendar" element={<EcoCalendar />} />
-              <Route path="/tips" element={<TipsSection />} />
-              <Route path="/goals" element={<Goals />} />
-              <Route path="/offset" element={<CarbonOffset />} />
-              <Route path="/social" element={<SocialFeed />} />
-              <Route path="/marketplace" element={<Marketplace />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/auth" element={<AuthPage />} />
+              
+              {/* Protected Routes */}
+              <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+              <Route path="/add-data" element={<PrivateRoute><AddData /></PrivateRoute>} />
+              <Route path="/history" element={<PrivateRoute><TransactionHistory /></PrivateRoute>} />
+              <Route path="/breakdown" element={<PrivateRoute><EmissionBreakdown /></PrivateRoute>} />
+              <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+              <Route path="/leaderboard" element={<PrivateRoute><Leaderboard /></PrivateRoute>} />
+              <Route path="/chatbot" element={<PrivateRoute><Chatbot /></PrivateRoute>} />
+              <Route path="/calendar" element={<PrivateRoute><EcoCalendar /></PrivateRoute>} />
+              <Route path="/tips" element={<PrivateRoute><TipsSection /></PrivateRoute>} />
+              <Route path="/goals" element={<PrivateRoute><Goals /></PrivateRoute>} />
+              <Route path="/offset" element={<PrivateRoute><CarbonOffset /></PrivateRoute>} />
+              <Route path="/social" element={<PrivateRoute><SocialFeed /></PrivateRoute>} />
+              <Route path="/marketplace" element={<PrivateRoute><Marketplace /></PrivateRoute>} />
             </Routes>
           </div>
         </Router>
