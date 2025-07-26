@@ -275,3 +275,5 @@ export const TipsSection: React.FC = () => {
     </div>
   );
 };
+
+export default TipsSection;
