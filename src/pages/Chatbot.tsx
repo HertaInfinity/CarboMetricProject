@@ -3,7 +3,7 @@ import { Send, Mic, MicOff, Bot, User, Lightbulb, Leaf, TrendingDown } from 'luc
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Initialize Gemini
-const genAI = new GoogleGenerativeAI(process.env.NEXT_PUBLIC_GEMINI_API_KEY || '');
+const genAI = new GoogleGenerativeAI(import.meta.env.NEXT_PUBLIC_GEMINI_API_KEY || '');
 
 interface Message {
   id: string;
