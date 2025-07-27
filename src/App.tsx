@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import Navbar from './components/Navbar';
 import LandingPage from './pages/LandingPage';
@@ -32,8 +32,15 @@ function App() {
           <div className="min-h-screen bg-black text-green-400">
             {isAuthenticated && <Navbar />}
             <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/auth" element={<AuthPage />} />
+              {/* Public Routes - only accessible when NOT authenticated */}
+              <Route 
+                path="/" 
+                element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <LandingPage />} 
+              />
+              <Route 
+                path="/auth" 
+                element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <AuthPage />} 
+              />
               
               {/* Protected Routes */}
               <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
