@@ -174,8 +174,6 @@ const LandingPage: React.FC = () => {
             </Link>
           </div>
         </section>
-
-        {/* ... [rest of your component remains unchanged] ... */}
       </div>
     </div>
   );

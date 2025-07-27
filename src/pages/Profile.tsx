@@ -1,8 +1,19 @@
-import { Award, Target, TrendingUp, Calendar, Edit, Settings, Star, Trophy } from 'lucide-react';
+import { Award, Target, TrendingUp, Calendar, Edit, Settings, Star, Trophy, LogOut } from 'lucide-react';
 import { useUser } from '../context/UserContext';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Profile = () => {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
+  const { logout } = useAuth0();
+
+  const handleLogout = () => {
+    setUser(null);
+    logout({ 
+      logoutParams: {
+        returnTo: window.location.origin 
+      }
+    });
+  };
 
   const achievements = [
     { id: 1, name: 'Plastic-Free Week', description: 'Completed 7 days without plastic products', icon: '🌿', unlocked: true, date: '2025-01-10' },
@@ -78,6 +89,13 @@ const Profile = () => {
                 </button>
                 <button className="p-3 bg-gray-800 border border-gray-600 rounded-xl text-gray-300 hover:text-white hover:border-green-500 transition-all duration-200">
                   <Settings className="w-5 h-5" />
+                </button>
+                <button 
+                  onClick={handleLogout}
+                  className="p-3 bg-red-800 border border-red-600 rounded-xl text-red-300 hover:text-white hover:border-red-500 hover:bg-red-700 transition-all duration-200"
+                  title="Logout"
+                >
+                  <LogOut className="w-5 h-5" />
                 </button>
               </div>
             </div>
