@@ -195,7 +195,7 @@ const Leaderboard = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white">Your Position</h3>
-                <p className="text-gray-400">Alex Green • Eco Warrior</p>
+                <p className="text-gray-400">Shaambhavi Singh • Eco Warrior</p>
               </div>
             </div>
             <div className="text-right">
