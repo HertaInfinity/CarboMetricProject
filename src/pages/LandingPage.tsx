@@ -50,7 +50,7 @@ const LandingPage: React.FC = () => {
                 Track Your
               </span>
               <br />
-              <span className="text-white">Carbon Footprint</span>
+              <span className="text-white">Carbon Footprint👣</span>
             </motion.h1>
             
             <motion.p 
