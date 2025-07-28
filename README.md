@@ -2,7 +2,8 @@
 
 **EcoTracker** is a smart carbon footprint tracking web app built during the [MLH Data Hackfest](https://mlh.io). It helps users **track**, **reduce**, and **offset** their CO₂ emissions based on their **transaction data**.
 
-![EcoTracker Screenshot](./assets/screenshot1.png)(./assets/screenshot2.png)
+![EcoTracker Screenshot](./assets/screenshot1.png)
+(./assets/screenshot2.png)
 
 ## 🌍 About the Project
 
