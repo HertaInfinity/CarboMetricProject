@@ -3,13 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://HertaInfinity.github.io/CarboMetricProject/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.4.0",
     "@google/generative-ai": "^0.24.1",
     "framer-motion": "^12.23.9",
     "lucide-react": "^0.525.0",
