@@ -57,14 +57,6 @@ Built with 💚 at the MLH Data Hackfest by:
 - Radhika Agrawal  
 - Shambhavi Singh  
 
----
-
-## 📜 License
-
-This project is licensed under the MIT License.
-
----
-
 ## 🙌 Acknowledgments
 
 - [Major League Hacking (MLH)](https://mlh.io)  
